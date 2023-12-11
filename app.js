@@ -12,7 +12,8 @@ const corsOptions = {
   optionsSuccessStatus: 204,
 };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+res.setHeader("Access-Control-Allow-Origin", "*");
 
 app.use(express.json());
 
