@@ -5,13 +5,14 @@ import router from "./Controllers.js";
 
 const app = express();
 
-// Set CORS headers
-res.setHeader("Access-Control-Allow-Origin", "*");
-res.setHeader(
-  "Access-Control-Allow-Methods",
-  "GET, POST, PUT, DELETE, OPTIONS"
-);
-res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+const corsOptions = {
+  origin: "http://localhost:5173", // replace with your React app's URL
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 
