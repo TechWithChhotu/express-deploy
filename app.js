@@ -5,24 +5,13 @@ import router from "./Controllers.js";
 
 const app = express();
 
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-    methods: ["GET", "POST"], // Include POST method
-    credentials: true, // Include credentials (cookies) in the request
-  })
+// Set CORS headers
+res.setHeader("Access-Control-Allow-Origin", "*");
+res.setHeader(
+  "Access-Control-Allow-Methods",
+  "GET, POST, PUT, DELETE, OPTIONS"
 );
-
-// Enable CORS for all routes
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  next();
-});
-
-// Enable CORS for all routes
-app.use(cors());
+res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
 app.use(express.json());
 
